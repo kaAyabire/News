@@ -49,13 +49,12 @@ android {
         }
     }
 
-    /**
+
     testOptions{
         unitTests.all {
             useJUnitPlatform()
         }
     }
-    **/
 
 }
 
@@ -92,8 +91,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
-    //testImplementation 'org.projectlombok:lombok:1.18.22'
-    //testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     // debugImplementation because LeakCanary should only run in debug builds.
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
