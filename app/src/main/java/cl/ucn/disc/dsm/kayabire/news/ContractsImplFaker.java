@@ -24,18 +24,44 @@
 
 package cl.ucn.disc.dsm.kayabire.news;
 
+import com.github.javafaker.Faker;
+import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.ZoneId;
+import org.threeten.bp.ZonedDateTime;
 
 /**
- * The Contracts of The News Project
- *
- * @author Karina Ayabire-Ayabire
+ * Contract Implementation of News with Faker.
  */
-public interface Contracts {
+public class ContractsImplFaker implements Contracts {
 
   /**
    * @return all the News in the backend ordered by publishedAt.
    */
-  List<News> retrieveNews(int size);
+  @Override
+  public List<News> retrieveNews(final int size) {
 
+    //Faker provider
+    final Faker faker = new Faker();
+
+    // The List to return
+    final List<News> newsList = new ArrayList<>();
+
+    for(int i=0;i<size;i++){
+      News news = new News(
+          faker.superhero().name(),
+          faker.artist().name(),
+          faker.artist().name(),
+          faker.internet().url(),
+          faker.internet().url(),
+          faker.backToTheFuture().quote(),
+          faker.starTrek().villain(),
+          ZonedDateTime.now(ZoneId.of("-4"))
+      );
+
+      newsList.add(news);
+    }
+
+    return newsList;
+  }
 }
