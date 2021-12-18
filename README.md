@@ -6,23 +6,25 @@ Android Project to show a list of News.
 
 ```puml
 @startuml
+package externals* #ffcccc{
+    package org.threeten.bp{
+        class ZonedDateTime{
+            ...
+        }
+        class ZoneId{
+            ...
+        }
+    }
+    package net.openhft.hashing{
+        class LongHashFunction{
+        }
+    }
+    package com.github.javafaker{
+        class Faker{
+            ...
+        }
+    }
 
-package org.threeten.bp{
-    class ZonedDateTime{
-        ...
-    }
-    class ZoneId{
-        ...
-    }
-}
-package net.openhft.hashing{
-    class LongHashFunction{
-    }
-}
-package com.github.javafaker{
-    class Faker{
-        ...
-    }
 }
 
 package cl.ucn.disc.dsm.news{
@@ -54,7 +56,7 @@ package cl.ucn.disc.dsm.news{
     
     package services #ccccff{
         interface Contracts <<interface>>{
-            - retrieveNews(size:int): List<News>
+            + retrieveNews(size:int): List<News>
         }
         Contracts ..> News : <<use>>
         

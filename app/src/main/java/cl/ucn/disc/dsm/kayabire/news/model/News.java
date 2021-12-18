@@ -22,7 +22,7 @@
  *
  */
 
-package cl.ucn.disc.dsm.kayabire.news;
+package cl.ucn.disc.dsm.kayabire.news.model;
 
 import lombok.Getter;
 import net.openhft.hashing.LongHashFunction;

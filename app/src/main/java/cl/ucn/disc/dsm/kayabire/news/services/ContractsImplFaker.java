@@ -22,39 +22,47 @@
  *
  */
 
-package cl.ucn.disc.dsm.kayabire.news;
+package cl.ucn.disc.dsm.kayabire.news.services;
 
+import cl.ucn.disc.dsm.kayabire.news.model.News;
+import com.github.javafaker.Faker;
+import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.PackageUtils;
+import org.threeten.bp.ZoneId;
+import org.threeten.bp.ZonedDateTime;
 
 /**
- * @author Karina Ayabire-Ayabire
+ * Contract Implementation of News with Faker.
  */
-public class TestContractsImplFaker {
+public class ContractsImplFaker implements Contracts {
 
   /**
-   * Testing the Constructor.
+   * @return all the News in the backend ordered by publishedAt.
    */
-  @Test
-  public void testConstructor(){
-    // Nothing here !
-  }
+  @Override
+  public List<News> retrieveNews(final int size) {
 
-  /**
-   * Testing the RetrieveNews.
-   */
-  @Test
-  public void testRetrieveNews(){
+    //Faker provider
+    final Faker faker = new Faker();
 
-    final Contracts contracts= new ContractsImplFaker();
-    Assertions.assertNotNull(contracts,"Contracts was null");
+    // The List to return
+    final List<News> newsList = new ArrayList<>();
 
-    final int N =10;
-    final List<News> listNews = contracts.retrieveNews(N);
-    Assertions.assertNotNull(listNews,"ListNews was null");
-    Assertions.assertEquals(N, listNews.size(),"Wrong number of elements");
+    for(int i=0;i<size;i++){
+      News news = new News(
+          faker.superhero().name(),
+          faker.artist().name(),
+          faker.artist().name(),
+          faker.internet().url(),
+          faker.internet().url(),
+          faker.backToTheFuture().quote(),
+          faker.starTrek().villain(),
+          ZonedDateTime.now(ZoneId.of("-4"))
+      );
 
+      newsList.add(news);
+    }
+
+    return newsList;
   }
 }

@@ -22,8 +22,9 @@
  *
  */
 
-package cl.ucn.disc.dsm.kayabire.news;
+package cl.ucn.disc.dsm.kayabire.news.services;
 
+import cl.ucn.disc.dsm.kayabire.news.model.News;
 import java.util.List;
 
 /**
